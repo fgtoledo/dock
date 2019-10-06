@@ -1,0 +1,35 @@
+version: '2.2'
+
+services:
+
+  mysqlfgt:
+    build: mysqlfgt/.
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: 010383
+      MYSQL_DATABASE: projetojava
+      MYSQL_USER: teste
+      MYSQL_PASSWORD: fgt01038
+
+
+  app:
+    build: app/.
+    ports:
+     - "8080:8080"
+    volumes:
+      - ./java/ 
+    depends_on:
+      - mysqlfgt
+    environment:
+      DISPLAY: $DISLAY
+    volumes: 
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+
+
+   
+
+
