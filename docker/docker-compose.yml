@@ -19,13 +19,12 @@ services:
     build: app/.
     ports:
      - "8080:8080"
-    volumes:
-      - ./java/ 
     depends_on:
       - mysqlfgt
     environment:
       DISPLAY: $DISLAY
     volumes: 
+      - /usr/lib/jvm/java-8-openjdk-amd64
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/root/.Xauthority
 
